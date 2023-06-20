@@ -33,7 +33,7 @@ namespace zd4
         {
             try
             {
-                if (Convert.ToDouble(loanTermInMonths) > 0 && Convert.ToDouble(loanAmount) > 0)
+                if (double.Parse(loanTermInMonths) > 0 && double.Parse(loanAmount) > 0)
                 {
                     double monthlyInterestRate = interestRate / 1200;
                     double annuityFactor = monthlyInterestRate * Math.Pow(1 + monthlyInterestRate, int.Parse(loanTermInMonths)) / (Math.Pow(1 + monthlyInterestRate, int.Parse(loanTermInMonths)) - 1); 
@@ -45,7 +45,7 @@ namespace zd4
                 }
                 else
                 {
-                    this.DisplayAlert("Ошибка", "Введите положительное число", "");
+                    DisplayAlert("Ошибка", "Введите положительное число", "");
                     MonthlyPaymentLabel.Text = "Ежемесячный платеж: NULL";
                     TotalLabel.Text = "Общая сумма: NULL";
                     OverpaymentLabel.Text = "Переплата: NULL";
@@ -53,7 +53,7 @@ namespace zd4
             }
             catch
             {
-                this.DisplayAlert("Ошибка", "Можно вводить только числа", "");
+                DisplayAlert("Ошибка", "Можно вводить только числа", "");
             }
         }
     }
